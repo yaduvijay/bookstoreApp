@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Story book",
+    "title": "Lorem ipsum dolor sit amet adipisicing elite.",
+    "price": 0,
+    "category": "Free",
+    "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794"
+  },
+  {
+    "id": 2,
+    "name": "Story book",
+    "title": "Lorem ipsum dolor sit amet adipisicing elite.",
+    "price": 0,
+    "category": "Sport Book",
+    "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
+  },
+  {
+    "id": 3,
+    "name": "Novel",
+    "title": "Lorem ipsum dolor sit amet adipisicing elite.",
+    "price": 0,
+    "category": "Must buy",
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba"
+  },
+  {
+    "id": 4,
+    "name": "Story book",
+    "title": "Lorem ipsum dolor sit amet adipisicing elite.",
+    "price": 0,
+    "category": "Free",
+    "image": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d"
+  },
+    {
+    "id": 5,
+    "name": "Story book",
+    "title": "Lorem ipsum dolor sit amet adipisicing elite.",
+    "price": 0,
+    "category": "Free",
+    "image": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d"
+  }
+]
