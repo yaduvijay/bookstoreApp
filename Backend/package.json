@@ -1,0 +1,30 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "mern project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "https://github.com/yaduvijay/bookstoreApp.git",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaduvijay/bookstoreApp.git"
+  },
+  "author": "Vijay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yaduvijay/bookstoreApp/issues"
+  },
+  "homepage": "https://github.com/yaduvijay/bookstoreApp#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.3.3",
+    "nodemon": "^3.1.14"
+  }
+}

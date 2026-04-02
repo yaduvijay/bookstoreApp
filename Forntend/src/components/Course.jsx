@@ -1,13 +1,29 @@
-import React, { useState } from "react";
-import list from "../Data1/list.json";
+import React, { useEffect, useState } from "react";
+
 import Card from "./Card";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default function Course() {
   const [search, setSearch] = useState("");
+  const [book,setBook]=useState([]);
+  useEffect(()=>{
+        const getBook=async()=>{
+          try{
+           const res=await axios.get('http://localhost:8000/book');
+           console.log(res.data);
+           setBook(res.data);
+          }
+          catch(error){
+            console.log(error);
+
+          }
+        }
+        getBook();
+  },[])
 
   // Filter courses
-  const filteredCourses = list.filter((item) =>
+  const filteredCourses = book.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase())
   );
 

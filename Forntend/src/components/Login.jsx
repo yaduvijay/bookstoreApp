@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Login() {
   const {
@@ -9,22 +11,44 @@ function Login() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    };
+    axios
+      .post("http://localhost:8000/user/login", userInfo)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data) {
+          toast.success("LogigedIn Successfully");
+          document.getElementById("my_modal_3").close();
+          setTimeout(() => {
+            window.location.reload();
+            localStorage.setItem("User", JSON.stringify(res.data.user));
+          }, 1000);
+        }
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err);
+
+          toast.error("Error:" + err.response.data.message);
+          setTimeout(() => {}, 2000);
+        }
+      });
+  };
 
   return (
     <div>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box rounded-2xl shadow-xl p-8 bg-white dark:bg-gray-900">
-
           <form onSubmit={handleSubmit(onSubmit)} method="dialog">
-
             {/* Close Button */}
             <Link
               to="/"
               className="absolute right-4 top-4 text-gray-400 hover:text-red-500 text-xl"
-              onClick={() =>
-                document.getElementById("my_modal_3").close()
-              }
+              onClick={() => document.getElementById("my_modal_3").close()}
             >
               ✕
             </Link>
@@ -46,9 +70,7 @@ function Login() {
                 {...register("email", { required: true })}
               />
               {errors.email && (
-                <span className="text-sm text-red-500">
-                  Email is required
-                </span>
+                <span className="text-sm text-red-500">Email is required</span>
               )}
             </div>
 
@@ -78,14 +100,10 @@ function Login() {
             {/* Footer */}
             <p className="text-center mt-4 text-gray-600 dark:text-gray-300">
               Not registered?{" "}
-              <Link
-                to="/signup"
-                className="text-blue-500 hover:underline"
-              >
+              <Link to="/signup" className="text-blue-500 hover:underline">
                 Signup
               </Link>
             </p>
-
           </form>
         </div>
       </dialog>

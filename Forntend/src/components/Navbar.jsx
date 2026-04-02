@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Login from "./Login";
+import Logout from "./Logout";
+import { useAuth } from "../context/AuthProvider";
+
 
 export default function Navbar() {
+  const [authUser,setAuthUser]=useAuth();
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [sticky, setSticky] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -80,7 +84,9 @@ export default function Navbar() {
             {theme === "light" ? "🌙" : "☀️"}
           </button>
 
-          {/* Login Button */}
+          {
+            authUser?(<Logout/>):(
+              <div>
           <button
             onClick={() => document.getElementById("my_modal_3").showModal()}
             className="bg-pink-500 hover:bg-pink-600 transition-colors px-3 py-1 md:px-4 md:py-2 rounded-md text-sm md:text-base font-semibold"
@@ -89,6 +95,13 @@ export default function Navbar() {
           </button>
 
           <Login />
+          </div>
+            )
+              
+          }
+
+          {/* Login Button */}
+          
 
           {/* Mobile Menu Button */}
           <button
